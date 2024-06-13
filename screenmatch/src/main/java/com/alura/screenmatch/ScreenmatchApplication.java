@@ -4,7 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.service.ConsumoAPI;
+import com.alura.screenmatch.service.ConvierteDatos;
 
 /* para trabajar con spring es nesesario implemntar
  * 
@@ -26,8 +28,16 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		/* variable para consumir la API */
 
 		var consumoAPI = new ConsumoAPI();
-		var json = consumoAPI.obtenerDatos("http://www.omdbapi.com/?t=it&apikey=14991e95");
+		/* consumir la api */
+		var json = consumoAPI.obtenerDatos("http://www.omdbapi.com/?t=Criminal+Minds&apikey=14991e95");
+		/* imprime el json */
 		System.out.println(json);
+		/* variable de tipo convierte datos */
+		ConvierteDatos conversor = new ConvierteDatos();
+		/* pasamos los datos nesesarios */
+		var datos = conversor.obtenerDatos(json, DatosSerie.class);
+		/* se imprimen los datos que se quieren obtener */
+		System.out.println(datos);
 
 	}
 
