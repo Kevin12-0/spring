@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.service.ConsumoAPI;
 import com.alura.screenmatch.service.ConvierteDatos;
@@ -38,6 +39,17 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		var datos = conversor.obtenerDatos(json, DatosSerie.class);
 		/* se imprimen los datos que se quieren obtener */
 		System.out.println(datos);
+		/* cambiar valor de la bariable de nombre json */
+		json = consumoAPI.obtenerDatos("https://www.omdbapi.com/?t=Criminal+Minds&Season=1&episode=1&apikey=14991e95");
+		/* imprimir el json obtenido */
+		System.out.println(json);
+		/*
+		 * Convertir los datos (Obtener los datos que nesesitamos)
+		 * con ayuda del record creado Datas episodio
+		 */
+		DatosEpisodio episodio = conversor.obtenerDatos(json, DatosEpisodio.class);
+		/* imprimir los resultados */
+		System.out.println(episodio);
 
 	}
 
