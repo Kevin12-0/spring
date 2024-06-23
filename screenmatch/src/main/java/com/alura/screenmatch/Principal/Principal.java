@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.model.DatosTemporada;
 import com.alura.screenmatch.service.ConsumoAPI;
@@ -48,5 +49,17 @@ public class Principal {
         }
         /* imprimir cada objeto del array */
         temporadas.forEach(System.out::println);
+
+        /* mostrar solo el titutlo de los episodios para las temporadas */
+        for (int i = 0; i < datos.totalDeTemporadas(); i++) {
+            List<DatosEpisodio> episodiosTemporada = temporadas.get(i).episodios();
+            /* traer el titulo para cada uno de los episodios */
+            for (int j = 0; j < episodiosTemporada.size(); j++) {
+                System.out.println(episodiosTemporada.get(j).titulo());
+            }
+        }
+        System.out.println("--------Forma con lambda--------");
+        /* mostrar solo el titulo de los episodios, con expreciones lambda */
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
 }
