@@ -1,8 +1,12 @@
 package com.alura.screenmatch.Principal;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
@@ -61,5 +65,30 @@ public class Principal {
         System.out.println("--------Forma con lambda--------");
         /* mostrar solo el titulo de los episodios, con expreciones lambda */
         temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
+
+        /* convertir todas las informaciones a una lista de tipo DatosEpisodio */
+
+        /*
+         * creando lista
+         * lista que va a traer la lista de las temporadas, convirtiendo cada episodio,
+         * en una lista con sus elementos
+         * 
+         * .collect(Collectors.toList()) -> para mutar la lista, lo que causaria menos
+         * errores y hace la lista mas eficaz de usar
+         */
+
+        List<DatosEpisodio> datosEpisodios = temporadas.stream().flatMap(t -> t.episodios().stream())
+                .collect(Collectors.toList());
+
+        /*
+         * top 5 de episodios
+         * se filtra para que las evaluaciones que sea N/A, no se ranquen
+         * comprando el ranqueo del episodio e imprimiendo el resultado en reversa
+         */
+        System.out.println("Tops 5 de epiusodios");
+        datosEpisodios.stream().filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))
+                .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed()).limit(5)
+                .forEach(System.out::println);
+        ;
     }
 }
