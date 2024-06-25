@@ -11,8 +11,10 @@ import java.util.stream.Collectors;
 import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.model.DatosTemporada;
+import com.alura.screenmatch.model.Episodio;
 import com.alura.screenmatch.service.ConsumoAPI;
 import com.alura.screenmatch.service.ConvierteDatos;
+import com.alura.screenmatch.model.Episodio;
 
 /* menu para obtemer nombre de una serie */
 public class Principal {
@@ -89,6 +91,13 @@ public class Principal {
         datosEpisodios.stream().filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))
                 .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed()).limit(5)
                 .forEach(System.out::println);
-        ;
+
+        /* convertit los datatos a una lista de tipo episodio */
+
+        List<Episodio> episodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream()
+                        .map(d -> new Episodio(t.numero(), d)))
+                .collect(Collectors.toList());
+        episodios.forEach(System.out::println);
     }
 }

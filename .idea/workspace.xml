@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d85c14b2-411f-4b62-bc69-c536f4dcd70c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/ScreenmatchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/ScreenmatchApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosEpisodio.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosEpisodio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosSerie.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosSerie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/service/IConvierteDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/service/IConvierteDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosTemporada.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosTemporada.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +18,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2i1JxVGXdClWXuDIY7YPrZj4bMg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,8 +33,13 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/spring"
+    "last_opened_file_path": "E:/spring",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
