@@ -92,9 +92,17 @@ public class Principal {
          * comprando el ranqueo del episodio e imprimiendo el resultado en reversa
          */
         System.out.println("Tops 5 de epiusodios");
-        datosEpisodios.stream().filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))
-                .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed()).limit(5)
-                .forEach(System.out::println);
+        datosEpisodios.stream()
+                .filter(e -> !e.evaluacion().equalsIgnoreCase("N/A")) // Filter out episodes with "N/A" evaluation
+                .peek(e -> System.out.println("Primer filtro (N/A): " + e)) // Print each episode after the first filter
+                .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed()) // Sort episodes by evaluation in
+                                                                                    // descending order
+                .peek(e -> System.out.println("Segundo filtro de mayor a menor: " + e)) // Print each episode after
+                                                                                        // sorting
+                .limit(5) // Limit to the top 5 episodes
+                .peek(e -> System.out.println("Tercer filtro de limite: " + e)) // Print each episode after applying the
+                                                                                // limit
+                .forEach(System.out::println); // Print the final result
 
         /* convertit los datatos a una lista de tipo episodio */
 
