@@ -1,12 +1,16 @@
 package com.alura.screenmatch.Principal;
 
 import java.text.CollationElementIterator;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import org.springframework.cglib.core.Local;
 
 import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
@@ -99,5 +103,25 @@ public class Principal {
                         .map(d -> new Episodio(t.numero(), d)))
                 .collect(Collectors.toList());
         episodios.forEach(System.out::println);
+
+        /* ver episodios por fecha u año */
+
+        System.out.println("Indica el año a partir de cual deseas ver los episodios: ");
+        var fecha = teclado.nextInt();
+        teclado.nextLine();
+
+        /* desde el año, emepzando por el mes 1 y dia 1 */
+        LocalDate fechaBusqueda = LocalDate.of(fecha, 1, 1);
+        /* dar formato a la fecha */
+        DateTimeFormatter dft = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        /*
+         * buscar el episodio
+         * 
+         * quitando las fecha que vienen en null
+         */
+        episodios.stream()
+                .filter(e -> e.getFechaDeLanzamiento() != null && e.getFechaDeLanzamiento().isAfter(fechaBusqueda))
+                .forEach(e -> System.out.println("Temporada: " + e.getTemporada() + " Episodio " + e.getTitulo()
+                        + " Fecha de lanzamiento " + e.getFechaDeLanzamiento().format(dft)));
     }
 }
