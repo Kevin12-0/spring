@@ -5,7 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -34,6 +37,9 @@ public class Principal {
     /* crear la estancia para crear los datos */
     private ConvierteDatos conversor = new ConvierteDatos();
 
+    /**
+     * 
+     */
     public void muestraElMenu() {
         /* se pregunta el nomrebde la pelicula */
         System.out.println("Escribe el nombre de la seria que deseas buscar(Ingles): ");
@@ -131,5 +137,33 @@ public class Principal {
                 .filter(e -> e.getFechaDeLanzamiento() != null && e.getFechaDeLanzamiento().isAfter(fechaBusqueda))
                 .forEach(e -> System.out.println("Temporada: " + e.getTemporada() + " Episodio " + e.getTitulo()
                         + " Fecha de lanzamiento " + e.getFechaDeLanzamiento().format(dft)));
+
+        /* bsuqueda de episodio por pedaso de titulo */
+        System.out.println("Escriba el titulo del epoisodio que desea buscar: ");
+        var pedasoTitulo = teclado.nextLine();
+        Optional<Episodio> episodioBuscado = episodios.stream()
+                .filter(e -> e.getTitulo().toUpperCase().contains(pedasoTitulo.toUpperCase()))
+                .findFirst();
+        /* si se encuentra */
+        if (episodioBuscado.isPresent()) {
+            System.out.println("Episodio Encontrado");
+            System.out.println("Los datos son " + episodioBuscado.get());
+            /* si no se encuentra */
+        } else {
+            System.out.println("episodio no encontrado");
+        }
+
+        /* mapas */
+
+        Map<Integer, Double> evaluacionesPorTemporada = episodios.stream().filter(e -> e.getEvaluacion() > 0.0).collect(
+                Collectors.groupingBy(Episodio::getTemporada, Collectors.averagingDouble(Episodio::getEvaluacion)));
+        System.out.println(evaluacionesPorTemporada);
+        /* datos estadisticos sobre los capitulos de la serie (evaluacion) */
+        DoubleSummaryStatistics est = episodios.stream().filter(e -> e.getEvaluacion() > 0.0)
+                .collect(Collectors.summarizingDouble(Episodio::getEvaluacion));
+        /* obtener los valores medios, maximos de Double SummaryStatics */
+        System.out.println(
+                "Media de las evaluaciones: " + est.getAverage() + " Episodio mejor evaluado: " + est.getMax()
+                        + " Episodio mejor evaluado " + est.getMax() + " Episodio peor evaluado " + est.getMin());
     }
 }
