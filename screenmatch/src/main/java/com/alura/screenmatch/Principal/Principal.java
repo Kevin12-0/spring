@@ -2,11 +2,15 @@ package com.alura.screenmatch.Principal;
 
 // Importaciones necesarias para la funcionalidad del código
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
 import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.model.DatosTemporada;
+import com.alura.screenmatch.model.Serie;
 import com.alura.screenmatch.service.ConsumoAPI;
 import com.alura.screenmatch.service.ConvierteDatos;
 
@@ -118,6 +122,10 @@ public class Principal {
         // Método para mostrar todas las series que se han buscado
         private void muestrarSeriesBuscadas() {
                 // Imprimir cada serie en la lista de series buscadas
-                datosSeries.forEach(System.out::println);
+                /* creacion de lista para alamacenar las series */
+                List<Serie> series = new ArrayList<>();
+                series = datosSeries.stream().map(d -> new Serie(d)).collect(Collectors.toList());
+                series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System.out::println);
+                
         }
 }
