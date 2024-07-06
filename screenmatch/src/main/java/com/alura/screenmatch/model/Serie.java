@@ -91,8 +91,13 @@ public class Serie {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return "genero -> " + genero + " titulo -> " + titulo + " plot-> " + plot + " Actors-> " + actors + " Poster-> "
+        return "genero -> " + genero + "\ntitulo -> " + titulo + "\n" + //
+                "plot-> " + plot + "\n" + //
+                "Actors-> " + actors + "\n" + //
+                "Poster-> "
                 + poster
-                + " Total de temporadas-> " + totalDeTemporadas + " evaluacion-> " + evaluacion;
+                + "\n" + //
+                "Total de temporadas-> " + totalDeTemporadas + "\n" + //
+                "evaluacion-> " + evaluacion;
     }
 }
