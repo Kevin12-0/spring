@@ -134,9 +134,15 @@ public class Principal {
         private void muestrarSeriesBuscadas() {
                 // Imprimir cada serie en la lista de series buscadas
                 /* creacion de lista para alamacenar las series */
-                List<Serie> series = new ArrayList<>();
-                series = datosSeries.stream().map(d -> new Serie(d)).collect(Collectors.toList());
+                /* retorna la base de datos con llos datos de las series guardadas */
+                List<Serie> series = repositorio.findAll();
                 series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System.out::println);
-
+                /*
+                 * new ArrayList<>();
+                 * series = datosSeries.stream().map(d -> new
+                 * Serie(d)).collect(Collectors.toList());
+                 * series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System
+                 * .out::println);
+                 */
         }
 }

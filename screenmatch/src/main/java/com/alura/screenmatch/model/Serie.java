@@ -45,8 +45,15 @@ public class Serie {
     private String poster;
     private String actors;
     private String plot;
-    /*@Transient
-    private List<Episodio> episodios; */
+
+    /*
+     * @Transient
+     * private List<Episodio> episodios;
+     */
+    
+    /* constructor predeterminado */
+    public Serie() {
+    }
 
     /* creacion del metodo constructor */
     public Serie(DatosSerie datosSerie) {
