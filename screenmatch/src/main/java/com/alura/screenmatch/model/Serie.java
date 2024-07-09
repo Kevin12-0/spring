@@ -7,10 +7,35 @@ import javax.swing.text.html.Option;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
+import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+/* entidades a almacenar */
+@Entity
+/* crea la tabla */
+@Table(name = "Series")
+
 public class Serie {
+    @Id
+    /*
+     * forma correcta, haciendo que id sea auto ioncremental
+     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    /* valor unico para el nombre */
+    @Column(unique = true)
     private String titulo;
     private Integer totalDeTemporadas;
     private Double evaluacion;
+    /* enumera la categoria */
+    @Enumerated(EnumType.STRING)
     private Categoria genero;
     private String poster;
     private String actors;
@@ -26,6 +51,14 @@ public class Serie {
         /* trae el primer genero y no debe trare algun luno */
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());
         this.plot = datosSerie.plot();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /* creacion de metodos get */
