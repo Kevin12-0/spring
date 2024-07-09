@@ -11,6 +11,7 @@ import com.alura.screenmatch.model.DatosEpisodio;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.model.DatosTemporada;
 import com.alura.screenmatch.model.Serie;
+import com.alura.screenmatch.repository.SerieRepositiry;
 import com.alura.screenmatch.service.ConsumoAPI;
 import com.alura.screenmatch.service.ConvierteDatos;
 
@@ -27,6 +28,12 @@ public class Principal {
 
         // Lista para almacenar los datos de las series que se han buscado
         private List<DatosSerie> datosSeries = new ArrayList<>();
+
+        private SerieRepositiry repositorio;
+
+        public Principal(SerieRepositiry repositiry) {
+                this.repositorio = repositiry;
+        }
 
         // Método principal que muestra el menú y maneja la interacción del usuario
         public void muestraElMenu() {
@@ -115,6 +122,10 @@ public class Principal {
                 DatosSerie datos = getDatosSerie();
                 // Agregar los datos de la serie a la lista de series buscadas
                 datosSeries.add(datos);
+                /* crear estancia de serie */
+                Serie serie = new Serie(datos);
+                /* pasarle los datos para almacenar */
+                repositorio.save(serie);
                 // Imprimir los datos de la serie
                 System.out.println(datos);
         }
@@ -126,6 +137,6 @@ public class Principal {
                 List<Serie> series = new ArrayList<>();
                 series = datosSeries.stream().map(d -> new Serie(d)).collect(Collectors.toList());
                 series.stream().sorted(Comparator.comparing(Serie::getGenero)).forEach(System.out::println);
-                
+
         }
 }
