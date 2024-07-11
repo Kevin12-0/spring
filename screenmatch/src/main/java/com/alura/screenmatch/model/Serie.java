@@ -9,7 +9,6 @@ import javax.swing.text.html.Option;
 
 import org.hibernate.mapping.Array;
 
-
 import com.fasterxml.jackson.annotation.JsonAlias;
 
 import jakarta.annotation.Generated;
@@ -23,7 +22,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
 
 /* entidades a almacenar */
 @Entity
@@ -48,10 +46,9 @@ public class Serie {
     private String poster;
     private String actors;
     private String plot;
+    /* se crea la relacion */
     @OneToMany(mappedBy = "serie")
     private List<Episodio> episodios;
-    
-
 
     /* constructor predeterminado */
     public Serie() {
@@ -148,5 +145,13 @@ public class Serie {
                 + "\n" + //
                 "Total de temporadas-> " + totalDeTemporadas + "\n" + //
                 "evaluacion-> " + evaluacion;
+    }
+
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(List<Episodio> episisodios) {
+        this.episodios = episisodios;
     }
 }
