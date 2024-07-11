@@ -12,6 +12,7 @@ import org.hibernate.mapping.Array;
 import com.fasterxml.jackson.annotation.JsonAlias;
 
 import jakarta.annotation.Generated;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -46,8 +47,11 @@ public class Serie {
     private String poster;
     private String actors;
     private String plot;
-    /* se crea la relacion */
-    @OneToMany(mappedBy = "serie")
+    /*
+     * se crea la relacion
+     * con el metodo de casaca, parta relacionar y que guarde los datos
+     */
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
     private List<Episodio> episodios;
 
     /* constructor predeterminado */
