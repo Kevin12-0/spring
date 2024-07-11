@@ -1,13 +1,14 @@
 package com.alura.screenmatch.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
 import javax.swing.text.html.Option;
 
 import org.hibernate.mapping.Array;
-import org.hibernate.mapping.List;
+
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
@@ -19,8 +20,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
 
 /* entidades a almacenar */
 @Entity
@@ -45,12 +48,11 @@ public class Serie {
     private String poster;
     private String actors;
     private String plot;
-
-    /*
-     * @Transient
-     * private List<Episodio> episodios;
-     */
+    @OneToMany(mappedBy = "serie")
+    private List<Episodio> episodios;
     
+
+
     /* constructor predeterminado */
     public Serie() {
     }

@@ -3,29 +3,60 @@ package com.alura.screenmatch.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import org.hibernate.annotations.ManyToAny;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "episodios")
+
 public class Episodio {
+    @Id
+    /*
+     * forma correcta, haciendo que id sea auto ioncremental
+     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
     private Double evaluacion;
     private LocalDate fechaDeLanzamiento;
+    @ManyToOne
+    private Serie serie;
+
+
+    public Episodio(){}
 
     public Episodio(Integer numero, DatosEpisodio d) {
         this.temporada = numero;
         this.titulo = d.titulo();
         this.numeroEpisodio = d.numeroEpisodio();
-        try{
+        try {
             this.evaluacion = Double.valueOf(d.evaluacion());
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             this.evaluacion = 0.0;
         }
-        try{
+        try {
             this.fechaDeLanzamiento = LocalDate.parse(d.fechaDeLanzamiento());
-        } catch (DateTimeParseException e){
+        } catch (DateTimeParseException e) {
             this.fechaDeLanzamiento = null;
         }
 
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 
     public Integer getTemporada() {
@@ -70,11 +101,10 @@ public class Episodio {
 
     @Override
     public String toString() {
-        return
-                "temporada=" + temporada +
-                        ", titulo='" + titulo + '\'' +
-                        ", numeroEpisodio=" + numeroEpisodio +
-                        ", evaluacion=" + evaluacion +
-                        ", fechaDeLanzamiento=" + fechaDeLanzamiento;
+        return "temporada=" + temporada +
+                ", titulo='" + titulo + '\'' +
+                ", numeroEpisodio=" + numeroEpisodio +
+                ", evaluacion=" + evaluacion +
+                ", fechaDeLanzamiento=" + fechaDeLanzamiento;
     }
 }
