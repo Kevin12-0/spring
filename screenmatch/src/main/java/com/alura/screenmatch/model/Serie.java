@@ -17,6 +17,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,8 +51,10 @@ public class Serie {
     /*
      * se crea la relacion
      * con el metodo de casaca, parta relacionar y que guarde los datos
+     * con Eager, es una forma de trar los datos anciosa o rapida, para que no cause
+     * errores
      */
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios;
 
     /* constructor predeterminado */
@@ -148,14 +151,16 @@ public class Serie {
                 + poster
                 + "\n" + //
                 "Total de temporadas-> " + totalDeTemporadas + "\n" + //
-                "evaluacion-> " + evaluacion;
+                "evaluacion-> " + evaluacion + "\n" + "episodios -> " + episodios;
     }
 
     public List<Episodio> getEpisodios() {
         return episodios;
     }
 
-    public void setEpisodios(List<Episodio> episisodios) {
-        this.episodios = episisodios;
+    public void setEpisodios(List<Episodio> episodios) {
+        /* para cada episodio, va a sacar el id de la serie */
+        episodios.forEach(e -> e.setSerie(this));
+        this.episodios = episodios;
     }
 }
