@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.alura.screenmatch.model.Categoria;
 import com.alura.screenmatch.model.DatosSerie;
 import com.alura.screenmatch.model.DatosTemporada;
 import com.alura.screenmatch.model.Episodio;
@@ -51,6 +52,9 @@ public class Principal {
                                         1 - Buscar series
                                         2 - Buscar episodios
                                         3 - Mostrar series buscadas
+                                        4 - Buscar serie por titulo
+                                        5 - Top 5 series
+                                        6 - Buscar por categoria
 
                                         0 - Salir
                                         """;
@@ -73,6 +77,15 @@ public class Principal {
                                         // Llamar al método para mostrar las series buscadas
                                         muestrarSeriesBuscadas();
                                         break;
+                                case 4:
+                                        buscarSeriePoritulo();
+                                        break;
+                                case 5:
+                                        topSeries();
+                                        break;
+                                case 6:
+                                        buscarSeriePorCategoria();
+                                        break;
                                 case 0:
                                         // Mensaje de cierre de la aplicación
                                         System.out.println("Cerrando la aplicación...");
@@ -81,6 +94,34 @@ public class Principal {
                                         // Mensaje para opciones inválidas
                                         System.out.println("Opción inválida");
                         }
+                }
+        }
+
+        private void buscarSeriePorCategoria() {
+                System.out.print("Escribe la categoria/genero por la cual deseas buscar la serie: ->");
+                var genero = teclado.nextLine();
+                var categoria = Categoria.fromEspanol(genero);
+                List<Serie> seriesPorCategoria = repositorio.findByGenero(categoria);
+                System.out.println("Series encontradas de la categoria ->" + genero);
+                seriesPorCategoria.forEach(System.out::println);
+        }
+
+        private void topSeries() {
+                List<Serie> topCinco = repositorio.findTop5ByOrderByEvaluacionDesc();
+                topCinco.forEach(
+                                s -> System.out.println(
+                                                "Serie: -> " + s.getTitulo() + " evaluacion: ->" + s.getEvaluacion()));
+        }
+
+        private void buscarSeriePoritulo() {
+                /* pedir el nombre de la serie */
+                System.out.print("Escribe el nombre de la serie que deseas buscar: ->");
+                var nombreSerie = teclado.nextLine();
+                Optional<Serie> serieBuscada = repositorio.findByTituloContainsIgnoreCase(nombreSerie);
+                if (serieBuscada.isPresent()) {
+                        System.out.println("La serie buscada es: -> " + serieBuscada.get());
+                } else {
+                        System.out.println("error: Serie no buscada");
                 }
         }
 

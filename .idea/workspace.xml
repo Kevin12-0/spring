@@ -7,8 +7,8 @@
     <list default="true" id="d85c14b2-411f-4b62-bc69-c536f4dcd70c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/ScreenmatchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/ScreenmatchApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosTemporada.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/DatosTemporada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/repository/SerieRepositiry.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/repository/SerieRepositiry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +35,21 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/spring",
+    "last_opened_file_path": "E:/spring/screenmatch/src/main/java/com/alura/screenmatch",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\spring\screenmatch\src\main\java\com\alura\screenmatch" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,5 +60,12 @@
       <updated>1718652398419</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
