@@ -55,6 +55,7 @@ public class Principal {
                                         4 - Buscar serie por titulo
                                         5 - Top 5 series
                                         6 - Buscar por categoria
+                                        7 - filtrara por temporadas y evalaucion
 
                                         0 - Salir
                                         """;
@@ -86,6 +87,9 @@ public class Principal {
                                 case 6:
                                         buscarSeriePorCategoria();
                                         break;
+                                case 7:
+                                        buscarPorEvaluacionYTotalTemporadas();
+                                        break;
                                 case 0:
                                         // Mensaje de cierre de la aplicación
                                         System.out.println("Cerrando la aplicación...");
@@ -95,6 +99,20 @@ public class Principal {
                                         System.out.println("Opción inválida");
                         }
                 }
+        }
+
+        private void buscarPorEvaluacionYTotalTemporadas() {
+                /* prefgunta el numero de temporadas y de evaluacion para empézar a filtrar */
+                System.out.print("numero de temporadas para filtrar: -> ");
+                var totalDeTemporadas = teclado.nextInt();
+                teclado.nextLine();
+                System.out.print("con que valor de evaluacion: ->");
+                var evaluacion = teclado.nextDouble();
+                teclado.nextLine();
+                /* funvion del filtro */
+                List<Serie> filtroSerie = repositorio.seriesPorTemporadaYEvaluacion(totalDeTemporadas, evaluacion);
+                System.out.println("----Series encontradas----");
+                filtroSerie.forEach(s -> System.out.println(s.getTitulo() + " -evalaucion: -> " + s.getEvaluacion()));
         }
 
         private void buscarSeriePorCategoria() {
