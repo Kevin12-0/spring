@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d85c14b2-411f-4b62-bc69-c536f4dcd70c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.fleet/run.json" beforeDir="false" afterPath="$PROJECT_DIR$/.fleet/run.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/Principal/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/model/Categoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/repository/SerieRepositiry.java" beforeDir="false" afterPath="$PROJECT_DIR$/screenmatch/src/main/java/com/alura/screenmatch/repository/SerieRepositiry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +31,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -42,7 +43,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+    "settings.editor.selected.configurable": "project.kotlinCompiler"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -3,7 +3,7 @@
         {
             "type": "java-source-run",
             "name": "Java-source-run configuration",
-            "sourceFile": "C:/Program Files/Java/jdk-22/bin",
+            "sourceFile": "C:/Program Files/Java/jdk-22/",
         },
         
     ]
